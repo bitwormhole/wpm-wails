@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./wpm.css" rel="stylesheet">
+    <title>WPM</title>
+</head>
+
+<body>
+    <div class="box-1">
+        <div class="box-2">
+            <h1> WPM </h1>
+            <p> Wormhole Project Manager </p>
+        </div>
+    </div>
+
+    <script src="./jquery-3.6.3.js"></script>
+    <script src="./wpm.js"></script>
+    <script>
+        $(document).ready(() => {
+            GetHomePageURL().then((url) => {
+                console.log("goto " + url)
+                window.location = url
+            })
+        })
+    </script>
+
+</body>
+
+</html>

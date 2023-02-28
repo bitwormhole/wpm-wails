@@ -1,0 +1,21 @@
+html {
+    color: rgb(59, 59, 59);
+    background-color: rgb(197, 197, 197);
+}
+
+.box-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+
+.box-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}

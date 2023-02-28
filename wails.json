@@ -1,0 +1,10 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "wpm-wails",
+  "outputfilename": "wpm-wails",
+
+  "author": {
+    "name": "MEZ",
+    "email": "mez@bitwormhole.com"
+  }
+}
