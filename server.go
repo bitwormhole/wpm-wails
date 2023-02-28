@@ -7,6 +7,7 @@ import (
 	"github.com/bitwormhole/starter"
 	"github.com/bitwormhole/starter/application"
 	"github.com/bitwormhole/starter/collection"
+	"github.com/bitwormhole/starter/vlog"
 	wpmmix "github.com/bitwormhole/wpm-mix"
 )
 
@@ -49,10 +50,22 @@ func (inst *myServer) run2() {
 	i := starter.InitApp()
 	i.UseMain(mod)
 	i.SetArguments(args)
-	i.Run()
+
+	err := inst.runWithRuntime(i)
+	if err != nil {
+		vlog.Error(err)
+	}
 }
 
 func (inst *myServer) getServerPort() string {
 	port := inst.context.port
 	return strconv.Itoa(port)
+}
+
+func (inst *myServer) runWithRuntime(i application.Initializer) error {
+	rt, err := i.RunEx()
+	if err != nil {
+		return err
+	}
+	return rt.Loop()
 }

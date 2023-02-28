@@ -19,7 +19,7 @@ func (inst *myClient) Run() {
 
 	// module
 	mb := application.ModuleBuilder{}
-	mb.Name(theModuleName)
+	mb.Name(theModuleName + "#client")
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
 	mb.Resources(res)
@@ -28,12 +28,23 @@ func (inst *myClient) Run() {
 	mod := mb.Create()
 
 	// args
-	args := []string{}
-	args = os.Args
+	args := os.Args
 
 	// run
 	i := starter.InitApp()
 	i.UseMain(mod)
 	i.SetArguments(args)
-	i.Run()
+
+	err := inst.runWithRuntime(i)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func (inst *myClient) runWithRuntime(i application.Initializer) error {
+	rt, err := i.RunEx()
+	if err != nil {
+		return err
+	}
+	return rt.Loop()
 }

@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"strconv"
-	"time"
 )
 
 // App struct
@@ -26,7 +25,7 @@ func (a *App) startup(ctx context.Context) {
 // HomePageURL 取主页地址
 func (a *App) HomePageURL() string {
 
-	time.Sleep(3 * time.Second)
+	// time.Sleep(3 * time.Second)
 
 	port := a.context.port
 	return "http://localhost:" + strconv.Itoa(port)
