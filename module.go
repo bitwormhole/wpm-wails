@@ -11,3 +11,6 @@ const (
 
 //go:embed "src/main/resources"
 var theModuleResFS embed.FS
+
+//go:embed "src/main/resources/icon_wpm.png"
+var theIconData []byte

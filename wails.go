@@ -4,6 +4,7 @@ import (
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+	"github.com/wailsapp/wails/v2/pkg/options/linux"
 )
 
 type myWails struct {
@@ -13,6 +14,7 @@ type myWails struct {
 func (inst *myWails) Run() {
 
 	ctx := inst.context
+	icon, _ := inst.loadIcon()
 
 	// Create an instance of the app structure
 	app := NewApp(ctx)
@@ -30,9 +32,16 @@ func (inst *myWails) Run() {
 		Bind: []interface{}{
 			app,
 		},
+		Linux: &linux.Options{
+			Icon: icon,
+		},
 	})
 
 	if err != nil {
 		println("Error:", err.Error())
 	}
+}
+
+func (inst *myWails) loadIcon() ([]byte, error) {
+	return theIconData, nil
 }
