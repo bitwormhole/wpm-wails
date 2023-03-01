@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 
 	"github.com/bitwormhole/starter"
@@ -43,7 +44,7 @@ func (inst *myServer) run2() {
 	mb.Dependency(wpmmix.Module())
 	mod := mb.Create()
 
-	args := []string{}
+	args := os.Args
 	args = append(args, "--server.port="+inst.getServerPort())
 
 	// run
