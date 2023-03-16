@@ -10,6 +10,7 @@ import (
 	"github.com/bitwormhole/starter/collection"
 	"github.com/bitwormhole/starter/vlog"
 	wpmmix "github.com/bitwormhole/wpm-mix"
+	"github.com/bitwormhole/wpm/server/service"
 )
 
 type myServer struct {
@@ -42,14 +43,15 @@ func (inst *myServer) run2() {
 	mb.Resources(res)
 
 	mb.Dependency(wpmmix.Module())
-	mod := mb.Create()
+	m := mb.Create()
+	service.SetAppModule(m)
 
 	args := os.Args
 	args = append(args, "--server.port="+inst.getServerPort())
 
 	// run
 	i := starter.InitApp()
-	i.UseMain(mod)
+	i.UseMain(m)
 	i.SetArguments(args)
 
 	err := inst.runWithRuntime(i)
