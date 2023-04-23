@@ -7,23 +7,28 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/linux"
 )
 
-type myWails struct {
+type myGUI struct {
 	context *myContext
 }
 
-func (inst *myWails) Run() {
+func (inst *myGUI) Run() error {
 
 	ctx := inst.context
-	icon, _ := inst.loadIcon()
+	icon, err := inst.loadIcon()
+	if err != nil {
+		return err
+	}
 
 	// Create an instance of the app structure
 	app := NewApp(ctx)
 
 	// Create application with options
-	err := wails.Run(&options.App{
-		Title:  "WPM",
-		Width:  1024,
-		Height: 768,
+	err = wails.Run(&options.App{
+		Title:     "WPM",
+		Width:     1024,
+		Height:    768,
+		MaxWidth:  4000,
+		MaxHeight: 2500,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -37,11 +42,13 @@ func (inst *myWails) Run() {
 		},
 	})
 
-	if err != nil {
-		println("Error:", err.Error())
-	}
+	// if err != nil {
+	// 	println("Error:", err.Error())
+	// }
+
+	return err
 }
 
-func (inst *myWails) loadIcon() ([]byte, error) {
+func (inst *myGUI) loadIcon() ([]byte, error) {
 	return theIconData, nil
 }

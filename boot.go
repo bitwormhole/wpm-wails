@@ -1,47 +1,56 @@
 package main
 
 import (
-	"os"
-
 	"github.com/bitwormhole/starter"
 	"github.com/bitwormhole/starter/application"
 	"github.com/bitwormhole/starter/collection"
+	wpmmix "github.com/bitwormhole/wpm-mix"
+	"github.com/bitwormhole/wpm-wails/app"
+	"github.com/bitwormhole/wpm-wails/gen/cboot"
 )
 
-type myClient struct {
+type myBoot struct {
 	context *myContext
 }
 
-func (inst *myClient) Run() {
+func (inst *myBoot) Run() error {
 	inst.context.port = 26666
 
 	res := collection.LoadEmbedResources(&theModuleResFS, theModuleResPath)
 
 	// module
 	mb := application.ModuleBuilder{}
-	mb.Name(theModuleName + "#client")
+	mb.Name(theModuleName + "#boot")
 	mb.Version(theModuleVersion)
 	mb.Revision(theModuleRevision)
-	mb.Resources(res)
 
-	mb.Dependency(starter.Module())
+	mb.Resources(res)
+	mb.OnMount(cboot.ConfigForBoot)
+
+	mb.Dependency(wpmmix.ModuleBoot())
 	mod := mb.Create()
 
 	// args
-	args := os.Args
+	// args := os.Args
 
 	// run
 	i := starter.InitApp()
 	i.UseMain(mod)
-	i.SetArguments(args)
+	// i.SetArguments(args)
+
+	app.BindCtx(inst.context, func(name string, c2 app.Ctx) {
+		i.SetAttribute(name, c2)
+	})
 
 	err := inst.runWithRuntime(i)
 	if err != nil {
-		panic(err)
+		return (err)
 	}
+
+	return nil
 }
 
-func (inst *myClient) runWithRuntime(i application.Initializer) error {
+func (inst *myBoot) runWithRuntime(i application.Initializer) error {
 	rt, err := i.RunEx()
 	if err != nil {
 		return err
