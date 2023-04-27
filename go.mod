@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/bitwormhole/starter v0.1.9
-	github.com/bitwormhole/wpm v0.1.7
-	github.com/bitwormhole/wpm-mix v0.1.7
+	github.com/bitwormhole/wpm v0.1.8
+	github.com/bitwormhole/wpm-mix v0.1.8
 	github.com/wailsapp/wails/v2 v2.3.1
 )
 

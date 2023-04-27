@@ -62,7 +62,7 @@ func (inst *myBoot) runWithRuntime(i application.Initializer) error {
 	return rt.Loop()
 }
 
-func (inst *myClient) loadServerPort(ctx application.Context) {
+func (inst *myBoot) loadServerPort(ctx application.Context) {
 	const name = "server.port"
 	port := inst.context.port
 	port = ctx.GetProperties().Getter().GetInt(name, port)
