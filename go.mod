@@ -4,19 +4,19 @@ go 1.18
 
 require (
 	github.com/bitwormhole/starter v0.1.9
-	github.com/bitwormhole/wpm v0.1.8
-	github.com/bitwormhole/wpm-mix v0.1.8
+	github.com/bitwormhole/wpm v0.1.10
+	github.com/bitwormhole/wpm-mix v0.1.10
 	github.com/wailsapp/wails/v2 v2.3.1
 )
 
 require (
-	bitwormhole.com/starter/afs v0.0.8 // indirect
+	bitwormhole.com/starter/afs v0.0.9 // indirect
 	bitwormhole.com/starter/base v0.0.1 // indirect
 	bitwormhole.com/starter/cli v0.0.9 // indirect
 	bitwormhole.com/starter/vlog v0.0.1 // indirect
 	github.com/bep/debounce v1.2.1 // indirect
-	github.com/bitwormhole/gitlib v0.0.16 // indirect
-	github.com/bitwormhole/starter-gin v0.1.4 // indirect
+	github.com/bitwormhole/gitlib v0.0.17 // indirect
+	github.com/bitwormhole/starter-gin v0.1.5 // indirect
 	github.com/bitwormhole/starter-gorm v0.0.8 // indirect
 	github.com/bitwormhole/starter-gorm-mysql v0.0.5 // indirect
 	github.com/bitwormhole/starter-gorm-sqlite v0.0.5 // indirect

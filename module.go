@@ -4,8 +4,8 @@ import "embed"
 
 const (
 	theModuleName     = "github.com/bitwormhole/wpm-wails"
-	theModuleVersion  = "v0.0.2"
-	theModuleRevision = 5
+	theModuleVersion  = "v0.1.0-preview-r6"
+	theModuleRevision = 6
 	theModuleResPath  = "src/main/resources"
 )
 
